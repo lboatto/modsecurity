@@ -27,19 +27,61 @@
         <section>
             <h1>ModSecurity</h1>
             <p>
-                ModSecurity est un Web Application Firewall permettant de filtrer les requêtes HTTP
+                Web Application Firewall permettant de filtrer les requêtes HTTP
                 avant qu'elles ne parviennent à l'application
             </p>
-
         </section>
 
+        <section>
+            <img src="./modsecurity.jpg"/><br/>
+            <span style="font-size:50%">Source : https://www.darknet.org.uk</span>
+        </section>
 
         <section>
             <p>
-               Cela permet de bloquer les attaques les plus courantes
+                Permet de bloquer les attaques les plus courantes :
             </p>
+            <ul>
+                <li>SQL Injection (SQLi)</li>
+                <li>Cross Site Scripting (XSS)</li>
+                <li>Local File Inclusion (LFI)</li>
+                <li>Remote File Inclusion (RFI)</li>
+                <li>Remote Code Execution (RCE)</li>
+            </ul>
+        </section>
+        <section>
+            <ul>
+                <li>Module disponible pour Apache &amp; NGINX</li>
+                <li>Gratuit</li>
+                <li>Open Source</li>
+                <li>https://www.modsecurity.org/</li>
+            </ul>
+        </section>
+        <section>
+            <h1>Intéressant...</h1>
+            <ul>
+                <li>Facile à installer</li>
+                <li>Ne nécessite pas de modifications de l'application</li>
+                <li>Mode apprentissage</li>
+            </ul>
+        </section>
+        <section>
+            <h1>Installation</h1>
+              <pre><code data-trim data-noescape>
+                      $ apt install libapache2-modsecurity modsecurity-crs
 
-            </section>
+                      $ mv /etc/modsecurity/modsecurity.conf-recommended \
+                      /etc/modsecurity/modsecurity.conf
+
+                      $ systemctl restart apache2
+                  </code></pre>
+        </section>
+
+        <section>
+            <h1>Un cas concret</h1>
+            <p>Utilisé sur le projet WordPress</p>
+            <p><a href="./log.html">Exemple de requête rejetée</a></p>
+        </section>
     </div>
 </div>
 
@@ -52,6 +94,8 @@
     // - https://github.com/hakimel/reveal.js#dependencies
     Reveal.initialize({
         transition: 'convex',
+        history: true,
+        slideNumber: true,
         dependencies: [
             {src: 'plugin/markdown/marked.js'},
             {src: 'plugin/markdown/markdown.js'},

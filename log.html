@@ -1,0 +1,23 @@
+<html>
+<style>
+    body {
+        background-color: black;
+    }
+    p {
+        color:#007F00;
+        font-size:300%
+    }
+</style>
+<body>
+<p>
+[:error] [pid 67] [client 172.18.0.1:33804] [client 172.18.0.1] ModSecurity: Warning. Pattern match
+"^(?i)(?:ht|f)tps?:\\\\/\\\\/(\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3})" at ARGS:redirect_to. [file
+"/usr/share/modsecurity-crs/rules/REQUEST-931-APPLICATION-ATTACK-RFI.conf"] [line "58"] [id "931100"] [rev "2"] [msg
+"Possible Remote File Inclusion (RFI) Attack: URL Parameter using IP Address"] [data "Matched Data: http://172.17.0.1
+found within ARGS:redirect_to: http://172.17.0.1/folder/wp-admin/"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"]
+[maturity "9"] [accuracy "9"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-rfi"]
+[tag "OWASP_CRS/WEB_ATTACK/RFI"] [hostname "172.17.0.1"] [uri "/folder/wp-login.php"] [unique_id
+"Wh8s1awSAAUAAABDUyIAAAAC"]
+</p>
+</body>
+</html>
