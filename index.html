@@ -27,8 +27,8 @@
         <section>
             <h1>ModSecurity</h1>
             <p>
-                Web Application Firewall permettant de filtrer les requêtes HTTP
-                avant qu'elles ne parviennent à l'application
+                Firewall applicatif web permettant de <strong>filtrer</strong> les requêtes HTTP
+                <strong>avant</strong> qu'elles ne parviennent à l'application
             </p>
         </section>
 
@@ -50,23 +50,20 @@
             </ul>
         </section>
         <section>
+            <h2>Intéressant...</h2>
             <ul>
-                <li>Module disponible pour Apache &amp; NGINX</li>
-                <li>Gratuit</li>
-                <li>Open Source</li>
-                <li>https://www.modsecurity.org/</li>
-            </ul>
-        </section>
-        <section>
-            <h1>Intéressant...</h1>
-            <ul>
-                <li>Facile à installer</li>
+                <li>Facile à installer (module Apache ou NGINX)</li>
+                <li>Gratuit & Open Source</li>
                 <li>Ne nécessite pas de modifications de l'application</li>
                 <li>Mode apprentissage</li>
             </ul>
         </section>
         <section>
-            <h1>Installation</h1>
+            <h2>Mais pas magique...</h2>
+            <p>Après l'installation il faudra prendre le temps d'analyser les requêtes bloquées et d'ajouter des whitelists en conséquence</p>
+        </section>
+        <section>
+            <h2>Installation</h2>
               <pre><code data-trim data-noescape>
                       $ apt install libapache2-modsecurity modsecurity-crs
 
@@ -78,10 +75,11 @@
         </section>
 
         <section>
-            <h1>Un cas concret</h1>
-            <p>Utilisé sur le projet WordPress</p>
-            <p><a href="./log.html">Exemple de requête rejetée</a></p>
+            <h3>Un exemple</h3>
+            <pre>curl "https://help-wordpress.epfl.ch?username=1'%20or%20'1'%20=%20'"</pre>
+            <p><a href="./log.html">Les logs</a></p>
         </section>
+
     </div>
 </div>
 

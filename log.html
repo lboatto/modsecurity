@@ -3,21 +3,33 @@
     body {
         background-color: black;
     }
-    p {
+    p,pre {
         color:#007F00;
-        font-size:300%
+        font-size:150%
     }
 </style>
 <body>
-<p>
-[:error] [pid 67] [client 172.18.0.1:33804] [client 172.18.0.1] ModSecurity: Warning. Pattern match
-"^(?i)(?:ht|f)tps?:\\\\/\\\\/(\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3}\\\\.\\\\d{1,3})" at ARGS:redirect_to. [file
-"/usr/share/modsecurity-crs/rules/REQUEST-931-APPLICATION-ATTACK-RFI.conf"] [line "58"] [id "931100"] [rev "2"] [msg
-"Possible Remote File Inclusion (RFI) Attack: URL Parameter using IP Address"] [data "Matched Data: http://172.17.0.1
-found within ARGS:redirect_to: http://172.17.0.1/folder/wp-admin/"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"]
-[maturity "9"] [accuracy "9"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-rfi"]
-[tag "OWASP_CRS/WEB_ATTACK/RFI"] [hostname "172.17.0.1"] [uri "/folder/wp-login.php"] [unique_id
-"Wh8s1awSAAUAAABDUyIAAAAC"]
-</p>
+<pre>
+GET /?username=1'%20or%20'1'%20=%20' HTTP/1.1
+Host: help-wordpress.epfl.ch
+User-Agent: curl/7.47.0
+Accept: */*
+X-Forwarded-Proto: https
+X-Forwarded-For: 128.178.11.35
+
+Message: Warning. detected SQLi using libinjection with fingerprint 's&sos' [file "/usr/share/modsecurity-crs/rules/REQUEST-942-APPLICATION-ATTACK-SQLI.conf"] [line "68"] [id "942100"] [rev "1"] [msg "SQL Injection Attack Detected via libinjection"] [data "Matched Data: s&sos found within ARGS:username: 1' or '1' = '"] [severity "CRITICAL"] [ver "OWASP_CRS/3.0.0"] [maturity "1"] [accuracy "8"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-sqli"] [tag "OWASP_CRS/WEB_ATTACK/SQL_INJECTION"] [tag "WASCTC/WASC-19"] [tag "OWASP_TOP_10/A1"] [tag "OWASP_AppSensor/CIE1"] [tag "PCI/6.5.2"]
+Message: Warning. Operator GE matched 5 at TX:anomaly_score. [file "/usr/share/modsecurity-crs/rules/REQUEST-949-BLOCKING-EVALUATION.conf"] [line "57"] [id "949110"] [msg "Inbound Anomaly Score Exceeded (Total Score: 5)"] [severity "CRITICAL"] [tag "application-multi"] [tag "language-multi"] [tag "platform-multi"] [tag "attack-generic"]
+Message: Warning. Operator GE matched 5 at TX:inbound_anomaly_score. [file "/usr/share/modsecurity-crs/rules/RESPONSE-980-CORRELATION.conf"] [line "73"] [id "980130"] [msg "Inbound Anomaly Score Exceeded (Total Inbound Score: 5 - SQLI=5,XSS=0,RFI=0,LFI=0,RCE=0,PHPI=0,HTTP=0,SESS=0): SQL Injection Attack Detected via libinjection"] [tag "event-correlation"]
+Apache-Error: [file "apache2_util.c"] [line 273] [level 3] [client %s] ModSecurity: %s%s [uri "%s"]%s
+Apache-Error: [file "apache2_util.c"] [line 273] [level 3] [client %s] ModSecurity: %s%s [uri "%s"]%s
+Apache-Error: [file "apache2_util.c"] [line 273] [level 3] [client %s] ModSecurity: %s%s [uri "%s"]%s
+Apache-Handler: application/x-httpd-php
+Stopwatch: 1512380394187839 46986 (- - -)
+Stopwatch2: 1512380394187839 46986; combined=1386, p1=350, p2=768, p3=67, p4=95, p5=106, sr=57, sw=0, l=0, gc=0
+Response-Body-Transformed: Dechunked
+Producer: ModSecurity for Apache/2.9.1 (http://www.modsecurity.org/); OWASP_CRS/3.0.0.
+Server: Apache/2.4.25 (Debian)
+Engine-Mode: "DETECTION_ONLY"
+</pre>
 </body>
 </html>
